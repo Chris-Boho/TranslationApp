@@ -2,7 +2,7 @@
 
 # import googletrans
 from googletrans import Translator
-from deep_translator import MyMemoryTranslator, LingueeTranslator, PonsTranslator
+from deep_translator import MyMemoryTranslator, LibreTranslator
 from numpy import source
 from langdetect import detect
 
@@ -25,11 +25,12 @@ def translation_myMem(input):
     return myMemTranslator
 
 
-def translation_Pons(input):
+def translation_Libre(input):
     src_lang = detect(input)
-    ponsTrans = PonsTranslator(
-        source=src_lang, target='english').translate(input)
-    return ponsTrans
+    print("test: " + src_lang)
+    libreTrans = LibreTranslator(
+        source=src_lang, target='en').translate(input)
+    return libreTrans
 
     # toTranslate = input('Enter text to be translated: ')
     #
@@ -66,13 +67,13 @@ while True:
     print('Translation1: ' + translated_google)
     translated_myMem = translation_myMem(values['-INPUT-'])
     print('Translation2: ' + translated_myMem)
-    translated_Pons = translation_Pons(values['-INPUT-'])
-    print('Translation3: ' + translated_Pons)
+    translated_Libre = translation_Libre(values['-INPUT-'])
+    print('Translation3: ' + translated_Libre)
 
     if event == 'Translate':
         window['-OUTPUT1-'].update(translated_google)
         window['-OUTPUT2-'].update(translated_myMem)
-        window['-OUTPUT3-'].update(translated_Pons)
+        window['-OUTPUT3-'].update(translated_Libre)
 
     if event == sg.WIN_CLOSED or event == 'Exit':
         break
