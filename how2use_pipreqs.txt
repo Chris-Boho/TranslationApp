@@ -1,0 +1,10 @@
+pip install pipreqs
+
+go to directory of program/file
+
+pipreqs .
+
+it'll generate a file requirements.txt
+
+can install with:
+pip install -r requirements.txt 
