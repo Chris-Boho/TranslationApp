@@ -17,33 +17,18 @@ def translation_google(input):
     result = translator.translate(toTranslate)
     return result.text
 
-
 def translation_myMem(input):
     src_lang = detect(input)
     myMemTranslator = MyMemoryTranslator(
         source=src_lang, target='english').translate(input)
     return myMemTranslator
 
-
 def translation_Libre(input):
     src_lang = detect(input)
-    print("test: " + src_lang)
+    # print("test: " + src_lang)
     libreTrans = LibreTranslator(
         source=src_lang, target='en').translate(input)
     return libreTrans
-
-    # toTranslate = input('Enter text to be translated: ')
-    #
-    # gTranslator = Translator()
-    # result = gTranslator.translate(toTranslate)
-
-    # print('src: ' + result.src)
-    # print('dest: ' + result.dest)
-    # print('origin: ' + result.origin)
-    # print('------TRANSLATIONS------')
-    #
-    # print('Google_Text: ' + result.text)
-
 
 layout = [
     [sg.Text(text='Input(Any Language): ', font=('', 20)),
@@ -57,7 +42,7 @@ layout = [
     [sg.Button('Translate'), sg.Button('Exit')]
      ]
 
-window = sg.Window('Translator', layout, location=(1000, 500))
+window = sg.Window('Translator', layout, size=(1000,500))
 
 while True:
     event, values = window.read()
@@ -77,3 +62,4 @@ while True:
 
     if event == sg.WIN_CLOSED or event == 'Exit':
         break
+window.close()
